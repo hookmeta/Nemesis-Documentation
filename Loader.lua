@@ -4,6 +4,13 @@ getgenv().Nemesis = {
             ['Unlock FPS'] = false,
             ['Cap'] = 165
         },
+        ['Keybinds'] = {
+            ["Unload Bind"] = { false, "P" } , -- to do
+            ["Panic Bind"] = { false, "U" }, -- to do
+            ["Target All"] = "C", -- to do
+            ["Target Silent"] = "C", -- to do
+            ["Target Assist"] = "Q",
+        },
         MouseArgs = "UpdateMousePos"
     },
     ['Aimbot'] = { 
@@ -11,14 +18,9 @@ getgenv().Nemesis = {
             ['Enabled'] = true,
             ['Main'] = {
                 ['Panel'] = {
-                    ['Keybinds'] = {
-                        Key = "Q",
-                        Hold = false,
-                        Mouse = false
-                    },
                     ['Parts'] = {
                         Horizontal = "Head",
-                        Vertical = { true, "HumanoidRootPart" },
+                        Vertical = { false, "Head" },
                         ['Nearest'] = {
                             Enabled = false,
                             Method = "Part"
@@ -26,12 +28,12 @@ getgenv().Nemesis = {
                     },
                     ['Smoothing'] = {
                         Enabled = true,
-                        X = 0.0023,
-                        Y = { true, 0.70 },
+                        X = 0.3,
+                        Y = { false, 0.3 },
                         Dynamic = { false , 10, 1 }
                     },
                     ['Interpolate'] = {
-                        ['Base'] = "Dynamic",
+                        ['Base'] = "Roblox", -- Dynamic, Static, Tick, Roblox
                         ['Roblox'] = "Linear",
                         ['Graph'] = { 
                             Start = .5,
@@ -55,8 +57,8 @@ getgenv().Nemesis = {
                         Z = 6
                     },
                     ['Prediction'] = {
-                        Horizontal = 0.11934,
-                        Vertical = 0.11934,
+                        Horizontal = 0.132,
+                        Vertical = 0.162,
                         UseZ = { true, 0.145 }
                     }
                 }
@@ -64,10 +66,8 @@ getgenv().Nemesis = {
         }
     },
     ['Bullet Redirection'] = {
-        ['Keybinding'] = {
+        ['Options'] = {
             Enabled = true,
-            Bind = false,
-            Key = "C"
         },
         ['Visual'] = {
             Type = "Target",
@@ -76,13 +76,18 @@ getgenv().Nemesis = {
         ['Prediction'] = {
             ['Base'] = {
                 Dynamic = { false, 0.003, 0.000315 },
-                X = 0.11,
+                X = 0.135,
                 Y = { false, 0.11 }
             }
         },
         ['Nearest'] = {
             Enabled = false,
-            Method = "Point"
+            Method = "Point",
+            Type = "Local Space" --[[
+                Local Space, Transform
+                Local Space is more accurate but checks bug out with it [fixing],
+                Transform is fully functional but less accurate
+            ]]
         },
         ['Redirect'] = {
             ['Base'] = {
@@ -98,13 +103,31 @@ getgenv().Nemesis = {
         Resolver = { true, ["Always On"] = true }
     },
     ['Renders'] = {
-        ['Circle'] = {
+        ['Silent Aim'] = {
             Visible = false,
             Transparency = 0.5,
             Thickness = 0.7,
             Filled = true,
             Color = Color3.fromRGB(113, 106, 128),
-            Radius = 1000
+            Radius = 60
+        },
+        ['Aimbot'] = {
+            Visible = false,
+            UseFOV = false,
+            Transparency = 0.5,
+            Thickness = 0.7,
+            Filled = true,
+            Color = Color3.fromRGB(113, 106, 128),
+            Radius = 30
+        },
+        ['Deadzone'] = {
+            Visible = false, -- stops targetting when target is inside the radius
+            UseDeadzone = false,
+            Transparency = 0.5,
+            Thickness = 0.7,
+            Filled = true,
+            Color = Color3.fromRGB(113, 106, 128),
+            Radius = 20
         },
         ['Outline'] = {
             Visible = false,
@@ -130,6 +153,10 @@ getgenv().Nemesis = {
         ['Indicators'] = {
             Enabled = true,
             KeyBind = "T"
+        },
+        ['Game Material'] = {
+            Enabled = false,
+            Material = "Cobblestone"
         }
     },
     ["Emotes"] = {
@@ -155,6 +182,5 @@ getgenv().Nemesis = {
     },
     ['Gun Customization'] = {}    
 }
-
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ed2878a27d3aeabfefe8b28d02cf4918.lua"))()
