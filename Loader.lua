@@ -18,7 +18,7 @@ getgenv().Nemesis = {
                     },
                     ['Parts'] = {
                         Horizontal = "Head",
-                        Vertical = { false, "Head" },
+                        Vertical = { true, "HumanoidRootPart" },
                         ['Nearest'] = {
                             Enabled = false,
                             Method = "Part"
@@ -31,7 +31,7 @@ getgenv().Nemesis = {
                         Dynamic = { false , 10, 1 }
                     },
                     ['Interpolate'] = {
-                        ['Base'] = "Roblox",
+                        ['Base'] = "Dynamic",
                         ['Roblox'] = "Linear",
                         ['Graph'] = { 
                             Start = .5,
@@ -40,7 +40,7 @@ getgenv().Nemesis = {
                             Rate = .1,
                             Lerp = .1
                         }
-                    }, 
+                    },
                     ['Extrapolate'] = { 
                         Enabled = false,
                         X = 6, 
@@ -70,7 +70,7 @@ getgenv().Nemesis = {
             Key = "C"
         },
         ['Visual'] = {
-            Type = "FOV",
+            Type = "Target",
             Follow = false
         },
         ['Prediction'] = {
@@ -95,6 +95,7 @@ getgenv().Nemesis = {
         Death = true,
         Visible = true,
         Picked = true,
+        Resolver = { true, ["Always On"] = true }
     },
     ['Renders'] = {
         ['Circle'] = {
@@ -127,7 +128,7 @@ getgenv().Nemesis = {
             },
         },
         ['Indicators'] = {
-            Enabled = false,
+            Enabled = true,
             KeyBind = "T"
         }
     },
@@ -135,7 +136,7 @@ getgenv().Nemesis = {
         Enabled = false,
         ['Animations'] = {
             ["Greet"] = { [1] = true, [2] = "T" },
-            ["Lay"] = { [1] = true, [2] = "V" } -- add any emote, even ++
+            ["Lay"] = { [1] = true, [2] = "V" }
         }
     },
     ['Sorting'] = {
@@ -147,7 +148,8 @@ getgenv().Nemesis = {
             Enable = false,
             List = {
                 [1] = "[Double-Barrel SG]", 
-                [2] = "Revolver"
+                [2] = "Revolver",
+                [3] = "Chicken"
             } 
         }
     },
