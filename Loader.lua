@@ -19,8 +19,9 @@ getgenv().Nemesis = {
             ['Main'] = {
                 ['Panel'] = {
                     ['Parts'] = {
-                        Horizontal = "Head",
-                        Vertical = { false, "Head" },
+                        Horizontal = "UpperTorso",
+                        Vertical = { true, "Head" },
+                        Custom = { false, "Head", "HumanoidRootPart" },
                         ['Nearest'] = {
                             Enabled = false,
                             Method = "Part"
@@ -28,12 +29,12 @@ getgenv().Nemesis = {
                     },
                     ['Smoothing'] = {
                         Enabled = true,
-                        X = 0.3,
-                        Y = { false, 0.3 },
+                        X = 1,
+                        Y = { false, 0.09 },
                         Dynamic = { false , 10, 1 }
                     },
                     ['Interpolate'] = {
-                        ['Base'] = "Roblox", -- Dynamic, Static, Tick, Roblox
+                        ['Base'] = "Roblox",
                         ['Roblox'] = "Linear",
                         ['Graph'] = { 
                             Start = .5,
@@ -57,8 +58,8 @@ getgenv().Nemesis = {
                         Z = 6
                     },
                     ['Prediction'] = {
-                        Horizontal = 0.132,
-                        Vertical = 0.162,
+                        Horizontal = 0.162,
+                        Vertical = 0.182,
                         UseZ = { true, 0.145 }
                     }
                 }
@@ -155,7 +156,7 @@ getgenv().Nemesis = {
             KeyBind = "T"
         },
         ['Game Material'] = {
-            Enabled = false,
+            Enabled = true,
             Material = "Cobblestone"
         }
     },
