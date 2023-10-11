@@ -1,11 +1,8 @@
 getgenv().Nemesis = {
     ['Script'] = {
-        ['Whitelisting'] = {
-            ["Script Key"] = "script key here"
-        },
         ['Optimization'] = {
-            ["Unlock FPS"] = false,
-            ["Cap"] = 165
+            ['Unlock FPS'] = false,
+            ['Cap'] = 165
         },
         ['Keybinds'] = {
             ["Unload Bind"] = { false, "P" } , -- to do
@@ -22,8 +19,9 @@ getgenv().Nemesis = {
             ['Main'] = {
                 ['Panel'] = {
                     ['Parts'] = {
-                        Horizontal = "HumanoidRootPart",
-                        Vertical = { false, "Head" },
+                        Horizontal = "UpperTorso",
+                        Vertical = { true, "Head" },
+                        Custom = { false, "Head", "HumanoidRootPart" },
                         ['Nearest'] = {
                             Enabled = false,
                             Method = "Part"
@@ -31,9 +29,9 @@ getgenv().Nemesis = {
                     },
                     ['Smoothing'] = {
                         Enabled = true,
-                        X = 0.092,
-                        Y = { false, 0.06 },
-                        Dynamic = { false , 10 , 1 }
+                        X = 1,
+                        Y = { false, 0.09 },
+                        Dynamic = { false , 10, 1 }
                     },
                     ['Interpolate'] = {
                         ['Base'] = "Roblox",
@@ -60,8 +58,8 @@ getgenv().Nemesis = {
                         Z = 6
                     },
                     ['Prediction'] = {
-                        Horizontal = 0.135,
-                        Vertical = 0.162,
+                        Horizontal = 0.162,
+                        Vertical = 0.182,
                         UseZ = { true, 0.145 }
                     }
                 }
@@ -79,14 +77,14 @@ getgenv().Nemesis = {
         ['Prediction'] = {
             ['Base'] = {
                 Dynamic = { false, 0.003, 0.000315 },
-                X = 0.121,
-                Y = { false, 0.121 }
+                X = 0.135,
+                Y = { false, 0.11 }
             }
         },
         ['Nearest'] = {
             Enabled = false,
             Method = "Point",
-            Type = "Transform" --[[
+            Type = "Local Space" --[[
                 Local Space, Transform
                 Local Space is more accurate but checks bug out with it [fixing],
                 Transform is fully functional but less accurate
@@ -108,27 +106,27 @@ getgenv().Nemesis = {
     ['Renders'] = {
         ['Silent Aim'] = {
             Visible = false,
-            Transparency = 1,
+            Transparency = 0.5,
             Thickness = 0.7,
-            Filled = false,
-            Color = Color3.fromRGB(255, 255, 255),
+            Filled = true,
+            Color = Color3.fromRGB(113, 106, 128),
             Radius = 60
         },
         ['Aimbot'] = {
             Visible = false,
             UseFOV = false,
-            Transparency = 0.4,
+            Transparency = 0.5,
             Thickness = 0.7,
             Filled = true,
-            Color = Color3.fromRGB(1, 255, 255),
+            Color = Color3.fromRGB(113, 106, 128),
             Radius = 30
         },
         ['Deadzone'] = {
             Visible = false, -- stops targetting when target is inside the radius
             UseDeadzone = false,
-            Transparency = 0.3,
+            Transparency = 0.5,
             Thickness = 0.7,
-            Filled = false,
+            Filled = true,
             Color = Color3.fromRGB(113, 106, 128),
             Radius = 20
         },
@@ -155,13 +153,7 @@ getgenv().Nemesis = {
         },
         ['Indicators'] = {
             Enabled = true,
-            KeyBind = "T",
-            ['Flags'] = {
-                Name = true,
-                Health = true,
-                Desyncing = true,
-                Distance = true
-            }
+            KeyBind = "T"
         },
         ['Game Material'] = {
             Enabled = true,
@@ -176,16 +168,20 @@ getgenv().Nemesis = {
         }
     },
     ['Sorting'] = {
-        Toggled = true,
-        Key = "F",
-        Alphabet = true,
-        Ammo = false,
-        Custom = {
-            Enable = true,
-            List = {[1] = "[Revolver]", [2] = "Chicken"}
+        Enabled = false,
+        KeyBind = "F",
+        Alphabetically = true,
+        Highest_Ammo = false,
+        ['Sorted'] = {
+            Enable = false,
+            List = {
+                [1] = "[Double-Barrel SG]", 
+                [2] = "Revolver",
+                [3] = "Chicken"
+            } 
         }
     },
     ['Gun Customization'] = {}    
 }
 
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ed2878a27d3aeabfefe8b28d02cf4918.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmeta/Nemesis-Documentation/main/LRM.lua"))()
