@@ -1,8 +1,5 @@
 getgenv().Nemesis = {
     ['Script'] = {
-        ['Whitelisting'] = {
-            ["Script Key"] = "script key here"
-        },
         ['Optimization'] = {
             ["Unlock FPS"] = false,
             ["Cap"] = 165
@@ -188,4 +185,4 @@ getgenv().Nemesis = {
     ['Gun Customization'] = {}    
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmeta/Nemesis-Documentation/main/LRM.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ed2878a27d3aeabfefe8b28d02cf4918.lua"))()
