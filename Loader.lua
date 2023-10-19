@@ -20,7 +20,7 @@ getgenv().Nemesis = {
                 ['Panel'] = {
                     ['Parts'] = {
                         Horizontal = "HumanoidRootPart",
-                        Vertical = { false, "Head" },
+                        Vertical = { true, "Head" },
                         ['Nearest'] = {
                             Enabled = false,
                             Method = "Part"
@@ -28,12 +28,12 @@ getgenv().Nemesis = {
                     },
                     ['Smoothing'] = {
                         Enabled = true,
-                        X = 0.32,
-                        Y = { true, 0.32 },
-                        Dynamic = { false , 10 , 1 }
+                        X = 0.0023,
+                        Y = { true, 0.0023 },
+                        Dynamic = { false , 1000 , 10 , 1, 1.5 }
                     },
                     ['Interpolate'] = {
-                        ['Base'] = "Roblox",
+                        ['Base'] = "Static",
                         ['Roblox'] = "Linear",
                         ['Graph'] = { 
                             Start = .5,
@@ -57,7 +57,7 @@ getgenv().Nemesis = {
                         Z = 6
                     },
                     ['Prediction'] = {
-                        Horizontal = 0.112,
+                        Horizontal = 0.145,
                         Vertical = 0.165,
                         UseZ = { true, 0.145 }
                     }
@@ -76,23 +76,26 @@ getgenv().Nemesis = {
         ['Prediction'] = {
             ['Base'] = {
                 Dynamic = { false, 0.003, 0.000315 },
-                X = 0.121,
+                X = 0.1231,
                 Y = { false, 0.162 }
             }
         },
         ['Nearest'] = {
             Enabled = false,
             Method = "Point",
-            Type = "Transform" --[[
-                Local Space, Transform
-                Local Space is more accurate but checks bug out with it [fixing],
-                Transform is fully functional but less accurate
-            ]]
+            Type = "" -- Local Space, Transform
         },
         ['Redirect'] = {
             ['Base'] = {
                 Floor = "HumanoidRootPart",
                 Air = "HumanoidRootPart"
+            },
+            ['Custom'] = {
+                Enabled = true,
+                ['Custom Points'] = {
+                    "Head", 
+                    "HumanoidRootPart",
+                }
             }
         }
     },
@@ -104,7 +107,7 @@ getgenv().Nemesis = {
     },
     ['Renders'] = {
         ['Silent Aim'] = {
-            Visible = false,
+            Visible = true,
             Transparency = 1,
             Thickness = 0.7,
             Filled = false,
@@ -127,7 +130,7 @@ getgenv().Nemesis = {
             Thickness = 0.7,
             Filled = false,
             Color = Color3.fromRGB(113, 106, 128),
-            Radius = 20
+            Radius = 60
         },
         ['Outline'] = {
             Visible = false,
@@ -139,29 +142,19 @@ getgenv().Nemesis = {
             Enabled = false,
             Color = Color3.fromRGB(255, 255, 1)
         },
-        ['ESP'] = {
-            Enabled = false,
-            Name = false,
-            Target = false,
-            ['Configuration'] = {
-                ['Name Size'] = 13,
-                ['Name Font'] = Drawing.Fonts.Plex,
-                ['Name Color'] = Color3.fromRGB(0, 0, 0),
-                ['Name Outline'] = true
-            },
-        },
         ['Indicators'] = {
             Enabled = true,
             KeyBind = "T",
             ['Flags'] = {
-                Name = true,
-                Health = true,
-                Desyncing = true,
-                Distance = true
+                ['Name'] = true, -- making it an option soon [is on by default]
+                ['Health'] = true, -- making it an option soon [is on by default]z
+                ['Desyncing'] = true, -- making it an option soon [is on by default]
+                ['Distance'] = true, -- making it an option soon [is on by default]
+                ['Follow Target'] = true
             }
         },
         ['Game Material'] = {
-            Enabled = true,
+            Enabled = false,
             Material = "Cobblestone"
         }
     },
@@ -182,7 +175,7 @@ getgenv().Nemesis = {
             List = {[1] = "[Revolver]", [2] = "Chicken"}
         }
     },
-    ['Gun Customization'] = {}    
+    ['Gun Customization'] = {}
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ed2878a27d3aeabfefe8b28d02cf4918.lua"))()
