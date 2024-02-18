@@ -1,228 +1,150 @@
 getgenv().Nemesis = {
     Universal = {
-        Preload = {
-            ['Intro'] = true
-        },
-
-        Keybinds = {
-            ['Hide Indicators'] = "T",
-            ['Sort Inventory'] = "F", -- wip
-            ["Aim Assist"] = "Q",
-            ['Disable Aim Assist'] = { ['Enabled'] = false, "Y" }  -- wip
-        },
-
-        Resolver = { -- wip
-            ['Enabled'] = true,
-            ['Velocity'] = {
-                ['Mode'] = "Nemesis", -- Vector3 disables prediction on Y Axis, use Nemesis to always Resolve
-                ['Activation'] = { ['Positive'] = 70, ['Negative'] = 40, ['Auto Detection'] = true, ['Origin'] = "Head" }
-            }
-        }
-    },
-
-    Aimbot = {
-        ['Enabled'] = true,
-        ['Only Enable While Holding Gun'] = false, -- wip
-        ['Disable When Typing'] = true, -- wip
-        ['Disable When Reloading'] = true, -- wip
-
-        ['Use HitParts'] = false,
-        ['HitParts'] = {"Head", "UpperTorso"},
-
-        ['Prediction'] = {
-            ['Predict Movement'] = true,
-            ['Vertical'] = 0.11934,
-            ['Horizontal'] = 0.11934,
-            ['Z Axis'] = { true, 0.11934 } 
-        },
-        
-        ['Parts'] = {
-            Horizontal = "HumanoidRootPart",
-            Vertical = { false, "Head" },
-            ['Nearest'] = {
-                Enabled = false,
-                Method = "Part"
-            }
-        },
-
-        ['Smoothing'] = {
-            ['Enabled'] = true,
-            ['On Floor Smoothing'] = 0.0023,
-            ['In Air Smoothing'] = 0.0023,
-            ['Auto Smoothing'] = { 
-                ['Enabled'] = false, 
-                ['Divider'] = 1000, 
-                ['Max Smoothness'] = 10, 
-                ['Smoothing Cap'] = 1.5
-            }
-        },
-
-        ['Easing'] = {
-            ['Use Roblox Easing'] = false,
-            ['Use Custom Easing'] = true,
-            ['Custom Settings'] = {
-                ['Type'] = "Static",
-                ['Linear Graph'] = {
-                    ['Start'] = 0.5,
-                    ['End'] = 0.9,
-                    ['Activate'] = 0.8,
-                    ['Speed'] = 0.1,
-                    ['Lerp'] = 10 / 205
-                }
-            },
-            ['Roblox Settings'] = {
-                ['Easing'] = "Linear",
-                ['Direction'] = "Sine"
-            }
-        },
-
-        ['Interpolate'] = {
-            ['Base'] = "Roblox",
-            ['Roblox'] = "Linear",
-            ['Graph'] = {
-                Start = .5,
-                End = .9,
-                Activate = .8,
-                Rate = .1,
-                Lerp = .1
-            }
-        },
-
-        ['Extrapolate'] = {
-            Enabled = false,
-            X = 6,
-            Y = 1,
-            Z = 1
-        },
-
-        ['Camera Shake'] = {
-            Enabled = false,
-            Multiply = 0.1,
-            X = 3,
-            Y = 1,
-            Z = 6
-        }
-    },
-    
-    ['Bullet Redirection'] = {
-        ['Options'] = {
+        Intro = false,
+        Key = "1",
+        Watermark = true,
+        GameType = "Universal",
+        ResolverData = {
             Enabled = true,
-        },
-
-        ['Visual'] = {
-            Type = "Target",
-            Follow = false -- wip
-        },
-
-        ['Prediction'] = {
-            ['Base'] = {
-                Dynamic = { false, 0.003, 0.000315 },
-                X = 0.11,
-                Y = { false, 0.11 }
+            VelocityType = "Default", --<Hood, PF, CBRO>
+            ActivationSettings = {
+                Positive = 100,
+                Negative = 40,
+                DetectionField = { true, Origin = "Head" }
             }
         },
-
-        ['Nearest'] = {
-            Enabled = false,
-            Method = "Point",
-            Type = ""
-        },
-
-        ['Redirect'] = {
-            ['Base'] = {
-                Floor = "HumanoidRootPart",
-                Air = "HumanoidRootPart"
-            },
-
-            ['Custom'] = {
+        Build = "Developer",
+        Games = {
+            BladeBall = {
                 Enabled = true,
-                ['Custom Points'] = { "Head", "Torso", "Arms", "Legs" },
-                ['Offset'] = {
-                    ['Head Offset'] = Vector3.new(0, 0.16, 0),
-                    ['Torso Offset'] = Vector3.new(0, 0.15, 0),
-                    ['Arms Offset'] = Vector3.new(0, 0.215, 0),
-                    ['Legs Offset'] = Vector3.new(0, 10 / 205, 0)
-                }
+                Delta = 2,
+                Acceleration = 0.4,
+                Gravity = 0.6,
+                AddedTime = 0.01
             }
+        },
+        CounterBlox = {
+            Enabled = false,
+            UnlockAll = false
         }
     },
-    ['Checks'] = {
+    Aimbot = {
+        Enabled = true,
+        Keybind = "C",
+        Bone = { Floor = "HumanoidRootPart", Air = "Head" },
+        Smoothing = {
+            Enabled = true,
+            Floor = 0.0032,
+            Air = 0.0032,
+            Automatic = { 
+                Enabled = false, 
+                Divider = 1000, 
+                MaxSmoothing = 1, 
+                SmoothingCap = 1.5
+            },
+            Easing = {
+                Type = "Roblox",
+                RobloxSettings = { Easing = "Linear", Direction = "Sine" }
+            }, 
+            Randomizer = { Enabled = false, Multiply = 13, X = 2, Y = 1, Z = 3 }, 
+            Stabilizing = { Enabled = false, Strength = 0.1, Smoothness = 0.02, UpdateRate = 0.02, "Note: This isn't smoothness, It's aimbot stabilizing, Floor and Air are aimbot smoothness."},
+            Readjustment = { Enabled = false, X = 6, Y = 11, Z = 6 }
+        }, 
+        Prediction = {
+            Enabled = true,
+            PredictionType = "Vector3", -- <Vector3, Default>
+            VelocityType = "Default", -- <Angular, Linear, Default>
+            Default = 0.11,
+            Vector3 = { X = 0.11934, Y = 0.11934, Z = 0.11934 }
+        }
+    },
+    ['Silent Aim'] = {
+        Enabled = true, 
+        HitPartType = "Default", -- <Array, Default>
+        HitParts = { Array = { "Head", "Arms", "Torso" }, Default = "HumanoidRootPart", Air = "HumanoidRootPart" },
+        TargetType = "Target",
+        Prediction = {
+            Enabled = true,
+            VelocityType = "Default", -- <Angular, Linear, Default>
+            Dynamic = { false, 0.003, 0.000315 },
+            Vector2 = { X = 0.112, Y = 0.13 }
+        }
+    },
+    ['Conditions'] = {
         Death = true,
         Visible = true,
-        Picked = true,
-        Resolver = { true, ["Always On"] = true } -- use this to resolve
+        Picked = true
     },
-    ['Renders'] = {
-        ['Silent Aim'] = {
+    ['Other'] = {
+        SpamToggle = {
+            Enabled = false,
+            Keybind = "B",
+            Interval = 0.03
+        },
+        Emotes = {
+            Enabled = false, --
+            Animations = { Greet = { [1] = true, [2] = "T" }, Lay = { [1] = true, [2] = "V" } }
+        },
+        Macro = {
+            Enabled = false,
+            Keybind = "Q",
+            Camera = "Third Person",
+            BypassGunRestriction = true
+        },
+        GameMaterial = {
+            Enabled = false,
+            Texture = "Cobblestone"
+        }
+    },
+    ['Visuals'] = {
+        SilentAim = {
             Visible = false,
             Transparency = 1,
             Thickness = 0.7,
             Filled = false,
             Color = Color3.fromRGB(255, 255, 255),
-            Radius = 1000
+            Radius = 50
         },
-        ['Aimbot'] = {
+        Aimbot = {
             Visible = false,
             UseFOV = false,
-            Transparency = 0.4,
+            Transparency = 1,
             Thickness = 0.7,
-            Filled = true,
+            Filled = false,
             Color = Color3.fromRGB(1, 255, 255),
             Radius = 30
         },
-        ['Deadzone'] = {
+        Deadzone = {
             Visible = false,
             UseDeadzone = false,
-            Transparency = 0.3,
+            Transparency = 1,
             Thickness = 0.7,
             Filled = false,
             Color = Color3.fromRGB(113, 106, 128),
-            Radius = 60
+            Radius = 10
         },
-        ['Outline'] = {
-            Visible = false,
-            Color = Color3.new(0, 0, 0),
-            Transparency = 0.6,
-            Thickness = 2.8
-        },
-        ['Target'] = {
+        Indicators = {
             Enabled = false,
-            Color = Color3.fromRGB(255, 255, 1)
-        },
-        ['Indicators'] = {
-            Enabled = true,
             KeyBind = "T",
-            ['Flags'] = {
-                ['Name'] = true, -- making it an option soon [is on by default]
-                ['Health'] = true, -- making it an option soon [is on by default]
-                ['Desyncing'] = true, -- making it an option soon [is on by default]
-                ['Distance'] = true, -- making it an option soon [is on by default]
-                ['Follow Target'] = true
-            }
-        },
-        ['Game Material'] = {
+            Flags = { Name = true, Health = true, Desynced = true, Distance = true, Sticky = true }
+        }
+        ESP = {
             Enabled = false,
-            Material = "Cobblestone"
+            Colors = {
+                Box = Color3.new(102, 179, 255),
+                Name = Color3.new(1, 1, 1),
+                LineColor = Color3.new(255, 230, 230), 
+                HighHealth = Color3.new(0, 179, 30),
+                LowHealth = Color3.new(179, 0, 0),
+                HealthBarOutline = Color3.new(0, 64, 128)
+            },
+            VisibleOnly = false,
+            TeamCheck = false,
+            Box = { Visible = false, "Basic" },
+            Name = false,
+            HealthBar = false,
+            Distance = false,
+            ToLines = { Visible = false, Thickness = 1, "Bottom" }
         }
-    },
-    ["Emotes"] = {
-        Enabled = false,
-        ['Animations'] = {
-            ["Greet"] = { [1] = true, [2] = "T" },
-            ["Lay"] = { [1] = true, [2] = "V" }
-        }
-    },
-    ['Sorting'] = { -- wip  
-        Toggled = true,
-        Alphabet = true,
-        Ammo = false,
-        Custom = {
-            Enable = true,
-            List = { [1] = "[Revolver]", [2] = "[Chicken]" }
-        }
-    },
-    ['Gun Customization'] = {}
+    }
 }
-
-
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6c32096b9d7f351468e9d8940743f039.lua"))()
